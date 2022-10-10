@@ -1,5 +1,6 @@
 import time
 from POMProjectDemo.Locators.locators import Locators
+from POMProjectDemo.Pages.Factory import On, Navigation
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import unittest
@@ -18,11 +19,18 @@ class LoginTest(unittest.TestCase):
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
-    def test_login_valid(self):
-        driver = self.driver
+        cls.on = On(driver)
+        cls.nav_to = Navigation('https://opensource-demo.orangehrmlive.com/', driver)
 
-        driver.get("https://opensource-demo.orangehrmlive.com/")
-        login_page = LoginPage(driver)
+
+    def test_login_valid(self):
+        #
+        # driver = self.driver
+        #
+        # driver.get("https://opensource-demo.orangehrmlive.com/")
+        # login_page = LoginPage(driver)
+        login_page = self.nav_to.login_page()
+
         login_page.login_form.enter_username("NotAdmin")
         login_page.login_form.enter_username("Admin")
         login_page.login_from.enter_password("admin123")
@@ -31,7 +39,11 @@ class LoginTest(unittest.TestCase):
         # TODO: Wait for page to reload
         # TODO: Check session token instead of home page
 
-        homepage = Homepage(driver)
+        self.nav_to.login_page().login(
+            "admin", "password"
+        )
+
+        homepage = self.on.home_page()
         homepage.click_menu()
         homepage.click_logout()
 
