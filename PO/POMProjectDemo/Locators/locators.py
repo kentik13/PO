@@ -4,7 +4,7 @@ class Locators():
 
     username_texbox_name = "username"
     password_texbox_name = "password"
-    login_button_xpath = "//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button"
+    login_button_xpath = "./*/button"
     invalidUsername_message_xpath = "//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]"
 
 

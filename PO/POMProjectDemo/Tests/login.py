@@ -22,10 +22,14 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
 
         driver.get("https://opensource-demo.orangehrmlive.com/")
-        login = LoginPage(driver)
-        login.enter_username("Admin")
-        login.enter_password("admin123")
-        login.click_login()
+        login_page = LoginPage(driver)
+        login_page.login_form.enter_username("NotAdmin")
+        login_page.login_form.enter_username("Admin")
+        login_page.login_from.enter_password("admin123")
+        login_page.login_form.click_login()
+
+        # TODO: Wait for page to reload
+        # TODO: Check session token instead of home page
 
         homepage = Homepage(driver)
         homepage.click_menu()
