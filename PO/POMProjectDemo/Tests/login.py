@@ -8,7 +8,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "...", "..."))
 from POMProjectDemo.Pages.LoginPage import LoginPage
 from POMProjectDemo.Pages.HomePage import Homepage
-import HtmlTestRunner
+
 
 class LoginTest(unittest.TestCase):
 
@@ -61,5 +61,5 @@ class LoginTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="C:/Users/kentik/PycharmProjects/PO/POMProjectDemo/reports"))
+    unittest.main()
 
